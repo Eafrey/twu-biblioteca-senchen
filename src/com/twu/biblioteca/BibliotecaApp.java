@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class BibliotecaApp {
 
@@ -14,13 +15,22 @@ public class BibliotecaApp {
         printWelcomeMessage();
         listMenu();
 
-        handlerInputMenuOption();
-
-
-//        printBookList();
+        Scanner scanner = new Scanner(System.in);
+        while(scanner.hasNext() && !scanner.next().equals("q")) {
+            String command = scanner.next();
+            handlerInputMenuOption(command);
+        }
     }
 
     static void handlerInputMenuOption(String command) {
+        switch (command) {
+            case "l":
+                printBookList();
+                break;
+            default:
+                System.out.println("Select a valid option!");
+                break;
+        }
     }
 
     static void printWelcomeMessage() {
