@@ -33,4 +33,7 @@ public class BibliotecaApp {
         bookList.add(new Book("The Rule of One", "Ashley Saunders", Instant.now()));
         bookList.add(new Book("You've Been So Lucky Already: A Memoir", "Alethea Black", Instant.now()));
     }
+
+    public void listMenu() {
+    }
 }

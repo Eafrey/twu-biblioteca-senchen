@@ -37,4 +37,13 @@ public class BibliotecaTest {
         assertThat(outputContent.toString(), containsString("AUTHOR"));
         assertThat(outputContent.toString(), containsString("PUBLISH DATE"));
     }
+
+    @Test
+    public void shouldListMenu() {
+        bibliotecaApp.listMenu();
+        assertThat(outputContent.toString(), containsString("MENU"));
+        assertThat(outputContent.toString(), containsString("List Books"));
+        assertThat(outputContent.toString(), containsString("Quit"));
+    }
+
 }
