@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -15,24 +16,22 @@ import static org.junit.Assert.assertThat;
 public class BibliotecaTest {
 
     BibliotecaApp bibliotecaApp;
+    final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
 
     @Before
     public void construcBibliotecaApp() {
         bibliotecaApp = new BibliotecaApp();
+        System.setOut(new PrintStream(outputContent));
     }
 
     @Test
     public void shouldHaveWelcomeMessage() {
-        final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputContent));
         bibliotecaApp.printWelcomeMessage();
         assertEquals("Welcome to Bangalore Public Library!\n", outputContent.toString());
     }
 
     @Test
     public void shouldListBooks() {
-        final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputContent));
         bibliotecaApp.printBookList();
         assertThat(outputContent.toString(), containsString("BOOK NAME"));
         assertThat(outputContent.toString(), containsString("AUTHOR"));
