@@ -7,12 +7,20 @@ import java.util.List;
 public class BibliotecaApp {
 
     private static List<Book> bookList = new ArrayList();
+    private static List<String> commandList = new ArrayList<>();
 
     public static void main(String[] args) {
         initBookList();
         printWelcomeMessage();
         listMenu();
+
+        handlerInputMenuOption();
+
+
 //        printBookList();
+    }
+
+    static void handlerInputMenuOption(String command) {
     }
 
     static void printWelcomeMessage() {

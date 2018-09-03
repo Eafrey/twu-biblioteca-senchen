@@ -40,10 +40,16 @@ public class BibliotecaTest {
 
     @Test
     public void shouldListMenu() {
-        BibliotecaApp.listMenu();
+        bibliotecaApp.listMenu();
         assertThat(outputContent.toString(), containsString("MENU"));
         assertThat(outputContent.toString(), containsString("List Books"));
         assertThat(outputContent.toString(), containsString("Quit"));
+    }
+
+    @Test
+    public void shouldBeNotifiedWhenChooseInvalidMenuOption() {
+        bibliotecaApp.handlerInputMenuOption("w");
+        assertThat(outputContent.toString(), containsString("Select a valid option!"));
     }
 
 }
