@@ -3,7 +3,6 @@ package com.twu.biblioteca;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -53,10 +52,20 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void shouldRemoveBookWhenIsChekckout() {
+    public void shouldCorrectlyCheckBook() {
         bibliotecaApp.checkoutBook(2);
         bibliotecaApp.printBookList();
-        assertFalse(outputContent.toString().contains("2"));
+        assertTrue(outputContent.toString().contains("Thank you! Enjoy the book."));
+//        assertFalse(outputContent.toString().contains("What Have You Done"));
+    }
+
+    @Test
+    public void shouldGetPromptUnscuccesCheckBook() {
+        bibliotecaApp.checkoutBook(2);
+        bibliotecaApp.checkoutBook(2);
+        bibliotecaApp.printBookList();
+        assertTrue(outputContent.toString().contains("That book is not available."));
+        assertFalse(outputContent.toString().contains("What Have You Done"));
     }
 
 }

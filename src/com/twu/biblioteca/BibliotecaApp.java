@@ -16,8 +16,11 @@ public class BibliotecaApp {
         listMenu();
 
         Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNext() && !scanner.next().equals("q")) {
+        while (scanner.hasNext()) {
             String command = scanner.next();
+            if (command.equals("q")) {
+                break;
+            }
             handlerInputMenuOption(command);
         }
     }
@@ -26,6 +29,12 @@ public class BibliotecaApp {
         switch (command) {
             case "l":
                 printBookList();
+                break;
+            case "c":
+                System.out.println("input book id you want to checkout:");
+                Scanner scanner = new Scanner(System.in);
+                int bookId = scanner.nextInt();
+                checkoutBook(bookId);
                 break;
             default:
                 System.out.println("Select a valid option!");
@@ -41,7 +50,9 @@ public class BibliotecaApp {
         System.out.println("Here is the list of the books.");
         System.out.println(String.format("%-3s%-50s%-50s%-50s", "ID", "---BOOK NAME---", "---AUTHOR---", "---PUBLISH DATE---"));
         for (Book book : bookList) {
-            System.out.println(book.toString());
+            if (!book.isBooked) {
+                System.out.println(book.toString());
+            }
         }
     }
 
@@ -56,9 +67,21 @@ public class BibliotecaApp {
     static void listMenu() {
         System.out.println("---------------MENU---------------");
         System.out.println(String.format("%-15s -> press 'l'", "List Books"));
+        System.out.println(String.format("%-15s -> press 'c'", "Checkout Book"));
         System.out.println(String.format("%-15s -> press 'q'", "Quit"));
     }
 
-    public void checkoutBook(int bookId) {
+    public static void checkoutBook(int bookId) {
+        for (Book book : bookList) {
+            if (book.getId() == bookId) {
+                if (book.isBooked) {
+                    System.out.println("That book is not available.");
+                } else {
+                    book.setBooked(true);
+                    System.out.println("Thank you! Enjoy the book.");
+                }
+                break;
+            }
+        }
     }
 }
