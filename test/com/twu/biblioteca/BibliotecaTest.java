@@ -40,7 +40,7 @@ public class BibliotecaTest {
 
     @Test
     public void shouldListMenu() {
-        bibliotecaApp.listMenu();
+        BibliotecaApp.listMenu();
         assertThat(outputContent.toString(), containsString("MENU"));
         assertThat(outputContent.toString(), containsString("List Books"));
         assertThat(outputContent.toString(), containsString("Quit"));

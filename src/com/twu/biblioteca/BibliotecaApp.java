@@ -11,7 +11,8 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         initBookList();
         printWelcomeMessage();
-        printBookList();
+        listMenu();
+//        printBookList();
     }
 
     static void printWelcomeMessage() {
@@ -34,6 +35,9 @@ public class BibliotecaApp {
         bookList.add(new Book("You've Been So Lucky Already: A Memoir", "Alethea Black", Instant.now()));
     }
 
-    public void listMenu() {
+    static void listMenu() {
+        System.out.println("---------------MENU---------------");
+        System.out.println(String.format("%-15s -> press 'l'", "List Books"));
+        System.out.println(String.format("%-15s -> press 'q'", "Quit"));
     }
 }
