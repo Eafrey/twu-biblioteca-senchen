@@ -68,4 +68,19 @@ public class BibliotecaTest {
         assertFalse(outputContent.toString().contains("What Have You Done"));
     }
 
+    @Test
+    public void shouldCorrectlyReturnBook() {
+        bibliotecaApp.checkoutBook(2);
+        bibliotecaApp.returnBook(2);
+        bibliotecaApp.printBookList();
+        assertTrue(outputContent.toString().contains("That is not a valid book to return."));
+//        assertFalse(outputContent.toString().contains("What Have You Done"));
+    }
+
+    @Test
+    public void shouldGetPromptUnscuccesReturnBook() {
+        bibliotecaApp.returnBook(2);
+        assertTrue(outputContent.toString().contains("That is not a valid book to return."));
+    }
+
 }

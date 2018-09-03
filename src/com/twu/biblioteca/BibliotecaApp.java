@@ -68,6 +68,7 @@ public class BibliotecaApp {
         System.out.println("---------------MENU---------------");
         System.out.println(String.format("%-15s -> press 'l'", "List Books"));
         System.out.println(String.format("%-15s -> press 'c'", "Checkout Book"));
+        System.out.println(String.format("%-15s -> press 'r'", "Return Book"));
         System.out.println(String.format("%-15s -> press 'q'", "Quit"));
     }
 
@@ -83,5 +84,8 @@ public class BibliotecaApp {
                 break;
             }
         }
+    }
+
+    public void returnBook(int bookId) {
     }
 }
