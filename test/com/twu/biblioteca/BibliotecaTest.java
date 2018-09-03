@@ -18,9 +18,10 @@ public class BibliotecaTest {
 
     @Before
     public void construcBibliotecaApp() {
+        System.setOut(new PrintStream(outputContent));
+
         bibliotecaApp = new BibliotecaApp();
         bibliotecaApp.initBookList();
-        System.setOut(new PrintStream(outputContent));
     }
 
     @Test
@@ -56,7 +57,7 @@ public class BibliotecaTest {
         bibliotecaApp.checkoutBook(2);
         bibliotecaApp.printBookList();
         assertTrue(outputContent.toString().contains("Thank you! Enjoy the book."));
-//        assertFalse(outputContent.toString().contains("What Have You Done"));
+        assertFalse(outputContent.toString().contains("What Have You Done"));
     }
 
     @Test
@@ -65,7 +66,7 @@ public class BibliotecaTest {
         bibliotecaApp.checkoutBook(2);
         bibliotecaApp.printBookList();
         assertTrue(outputContent.toString().contains("That book is not available."));
-        assertFalse(outputContent.toString().contains("What Have You Done"));
+        bibliotecaApp.returnBook(2);
     }
 
     @Test
@@ -73,14 +74,14 @@ public class BibliotecaTest {
         bibliotecaApp.checkoutBook(2);
         bibliotecaApp.returnBook(2);
         bibliotecaApp.printBookList();
-        assertTrue(outputContent.toString().contains("That is not a valid book to return."));
-//        assertFalse(outputContent.toString().contains("What Have You Done"));
+        assertTrue(outputContent.toString().contains("Thank you for returning the book."));
+        assertTrue(outputContent.toString().contains("What Have You Done"));
     }
 
     @Test
     public void shouldGetPromptUnscuccesReturnBook() {
         bibliotecaApp.returnBook(2);
-        assertTrue(outputContent.toString().contains("That is not a valid book to return."));
+        assertThat(outputContent.toString(),is("That is not a valid book to return.\n"));
     }
 
 }
