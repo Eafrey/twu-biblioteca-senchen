@@ -10,11 +10,15 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         initBookList();
-        System.out.println("Welcome to Bangalore Public Library!");
+        printWelcomeMessage();
         printBookList();
     }
 
-    private static void printBookList() {
+    static void printWelcomeMessage() {
+        System.out.println("Welcome to Bangalore Public Library!");
+    }
+
+    static void printBookList() {
         System.out.println("Here is the list of the books.");
         System.out.println(String.format("%-50s%-50s%-50s","---BOOK NAME---", "---AUTHOR---", "---PUBLISH DATE---"));
         for(Book book : bookList) {
