@@ -16,7 +16,7 @@ public class BibliotecaApp {
         listMenu();
 
         Scanner scanner = new Scanner(System.in);
-        while(scanner.hasNext() && !scanner.next().equals("q")) {
+        while (scanner.hasNext() && !scanner.next().equals("q")) {
             String command = scanner.next();
             handlerInputMenuOption(command);
         }
@@ -39,23 +39,26 @@ public class BibliotecaApp {
 
     static void printBookList() {
         System.out.println("Here is the list of the books.");
-        System.out.println(String.format("%-50s%-50s%-50s","---BOOK NAME---", "---AUTHOR---", "---PUBLISH DATE---"));
-        for(Book book : bookList) {
+        System.out.println(String.format("%-3s%-50s%-50s%-50s", "ID", "---BOOK NAME---", "---AUTHOR---", "---PUBLISH DATE---"));
+        for (Book book : bookList) {
             System.out.println(book.toString());
         }
     }
 
-    private static void initBookList() {
-        bookList.add(new Book("The Ragged Edge of Night", "Olivia Hawker", Instant.now()));
-        bookList.add(new Book("What Have You Done", "Matthew Farrell", Instant.now()));
-        bookList.add(new Book("We Were Mothers: A Novel", "Katie Sise", Instant.now()));
-        bookList.add(new Book("The Rule of One", "Ashley Saunders", Instant.now()));
-        bookList.add(new Book("You've Been So Lucky Already: A Memoir", "Alethea Black", Instant.now()));
+    static void initBookList() {
+        bookList.add(new Book(1, "The Ragged Edge of Night", "Olivia Hawker", Instant.now(), false));
+        bookList.add(new Book(2, "What Have You Done", "Matthew Farrell", Instant.now(), false));
+        bookList.add(new Book(3, "We Were Mothers: A Novel", "Katie Sise", Instant.now(), false));
+        bookList.add(new Book(4, "The Rule of One", "Ashley Saunders", Instant.now(), false));
+        bookList.add(new Book(5, "You've Been So Lucky Already: A Memoir", "Alethea Black", Instant.now(), false));
     }
 
     static void listMenu() {
         System.out.println("---------------MENU---------------");
         System.out.println(String.format("%-15s -> press 'l'", "List Books"));
         System.out.println(String.format("%-15s -> press 'q'", "Quit"));
+    }
+
+    public void checkoutBook(int bookId) {
     }
 }

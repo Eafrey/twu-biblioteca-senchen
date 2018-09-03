@@ -10,8 +10,7 @@ import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class BibliotecaTest {
 
@@ -21,6 +20,7 @@ public class BibliotecaTest {
     @Before
     public void construcBibliotecaApp() {
         bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.initBookList();
         System.setOut(new PrintStream(outputContent));
     }
 
@@ -50,6 +50,13 @@ public class BibliotecaTest {
     public void shouldBeNotifiedWhenChooseInvalidMenuOption() {
         bibliotecaApp.handlerInputMenuOption("w");
         assertThat(outputContent.toString(), containsString("Select a valid option!"));
+    }
+
+    @Test
+    public void shouldRemoveBookWhenIsChekckout() {
+        bibliotecaApp.checkoutBook(2);
+        bibliotecaApp.printBookList();
+        assertFalse(outputContent.toString().contains("2"));
     }
 
 }
