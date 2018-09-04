@@ -59,8 +59,6 @@ public class BibliotecaApp {
         }
     }
 
-    private void printMovieList() {
-    }
 
     void printWelcomeMessage() {
         System.out.println("Welcome to Bangalore Public Library!");
@@ -122,7 +120,7 @@ public class BibliotecaApp {
         }
     }
 
-    public void printMovies() {
+    public void printMovieList() {
         System.out.println("Here is the list of the movies.");
         System.out.println(String.format("%-3s%-50s%-6s%-50s%-3s", "ID", "---MOVIE NAME---", "---YEAR---", "---DIRECTOR---", "---RATING---"));
         for (Movie movie : movieList) {
@@ -135,9 +133,12 @@ public class BibliotecaApp {
 
     public void initMovieList() {
         movieList.add(new Movie(1, "碟中谍6：全面瓦解", 2018, "克里斯托弗·麦奎里", 8.3, false));
-        movieList.add(new Movie(1, "蚁人2：黄蜂女现身", 2018, "佩顿·里德", 7.5, false));
-        movieList.add(new Movie(1, "苏丹", 2018, "阿里·阿巴斯·札法", 7.2, false));
-        movieList.add(new Movie(1, "快把我哥带走", 2018, " 郑芬芬", 7.0, false));
-        movieList.add(new Movie(1, "一出好戏", 2018, "黄渤", 7.3, false));
+        movieList.add(new Movie(2, "蚁人2：黄蜂女现身", 2018, "佩顿·里德", 7.5, false));
+        movieList.add(new Movie(3, "苏丹", 2018, "阿里·阿巴斯·札法", 7.2, false));
+        movieList.add(new Movie(4, "快把我哥带走", 2018, " 郑芬芬", 7.0, false));
+        movieList.add(new Movie(5, "一出好戏", 2018, "黄渤", 7.3, false));
+    }
+
+    public void checkoutMovie(int movieId) {
     }
 }
