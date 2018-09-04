@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -27,6 +28,15 @@ public class BibliotecaUserCheckerTest {
         bibliotecaApp.userLogin("1111-1111", "123456");
         bibliotecaApp.checkoutBook(2);
         assertThat(bibliotecaApp.bookList.get(1).getUserName(), is("1111-1111"));
+    }
+
+    @Test
+    public void shouldShowUserInfo() {
+        bibliotecaApp.userLogin("1111-1111", "123456");
+        bibliotecaApp.showUserInfo();
+        assertThat(outputContent.toString(), containsString("1111-1111"));
+        assertThat(outputContent.toString(), containsString("1@tw.com"));
+        assertThat(outputContent.toString(), containsString("18812345678"));
     }
 
 }

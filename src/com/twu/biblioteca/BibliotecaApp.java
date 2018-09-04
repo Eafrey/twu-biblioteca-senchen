@@ -20,8 +20,6 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.initBookList();
-        bibliotecaApp.initMovieList();
 
         bibliotecaApp.printWelcomeMessage();
         bibliotecaApp.listMenu();
@@ -39,6 +37,20 @@ public class BibliotecaApp {
     void handlerInputMenuOption(String command) {
         Scanner scanner = new Scanner(System.in);
         switch (command) {
+            case "li":
+                System.out.println("enter library number:");
+                String ln = scanner.next();
+                System.out.println("enter password");
+                String p = scanner.next();
+                if(userLogin(ln, p)) {
+                    System.out.println("log in success!");
+                } else {
+                    System.out.println("log in fail!");
+                }
+                break;
+            case "si":
+                showUserInfo();
+                break;
             case "lb":
                 printBookList();
                 break;
@@ -66,9 +78,13 @@ public class BibliotecaApp {
         }
     }
 
+    public void showUserInfo() {
+    }
+
 
     void printWelcomeMessage() {
         System.out.println("Welcome to Bangalore Public Library!");
+        System.out.println("If you wanto checkout book, please first login.");
     }
 
     void printBookList() {
@@ -91,6 +107,8 @@ public class BibliotecaApp {
 
     void listMenu() {
         System.out.println("---------------MENU---------------");
+        System.out.println(String.format("%-15s -> press 'li'", "log in"));
+        System.out.println(String.format("%-15s -> press 'si'", "show user info"));
         System.out.println(String.format("%-15s -> press 'lb'", "List Books"));
         System.out.println(String.format("%-15s -> press 'cb'", "Checkout Book"));
         System.out.println(String.format("%-15s -> press 'rb'", "Return Book"));
