@@ -18,7 +18,7 @@ public class BibliotecaMovieTest {
         System.setOut(new PrintStream(outputContent));
 
         bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.initBookList();
+        bibliotecaApp.initMovieList();
     }
 
     @Test
@@ -27,6 +27,6 @@ public class BibliotecaMovieTest {
         assertThat(outputContent.toString(), containsString("MOVIE NAME"));
         assertThat(outputContent.toString(), containsString("YEAR"));
         assertThat(outputContent.toString(), containsString("DIRECTOR"));
-        assertThat(outputContent.toString(), containsString("MOVIE RATING"));
+        assertThat(outputContent.toString(), containsString("RATING"));
     }
 }

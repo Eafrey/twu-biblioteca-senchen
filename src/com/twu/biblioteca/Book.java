@@ -3,11 +3,11 @@ package com.twu.biblioteca;
 import java.time.Instant;
 
 public class Book {
-    int id;
-    String name;
-    String author;
-    Instant publishDate;
-    boolean isBooked;
+    private int id;
+    private String name;
+    private String author;
+    private Instant publishDate;
+    private boolean isBooked;
 
     public Book(int id, String name, String author, Instant publishDate, boolean isBooked) {
         this.id = id;
