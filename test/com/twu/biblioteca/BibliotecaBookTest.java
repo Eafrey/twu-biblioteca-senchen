@@ -11,7 +11,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class BibliotecaTest {
+public class BibliotecaBookTest {
 
     BibliotecaApp bibliotecaApp;
     final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
