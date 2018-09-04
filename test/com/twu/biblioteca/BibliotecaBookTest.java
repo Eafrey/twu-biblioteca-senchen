@@ -21,12 +21,13 @@ public class BibliotecaBookTest {
         System.setOut(new PrintStream(outputContent));
 
         bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.userLogin("1111-1111", "123456");
     }
 
     @Test
     public void shouldHaveWelcomeMessage() {
         bibliotecaApp.printWelcomeMessage();
-        assertEquals("Welcome to Bangalore Public Library!\n", outputContent.toString());
+        assertThat(outputContent.toString(), containsString("Welcome to Bangalore Public Library!"));
     }
 
     @Test

@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class BibliotecaUserCheckerTest {
+public class BibliotecaPresetUsersTest {
 
     BibliotecaApp bibliotecaApp;
     final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();

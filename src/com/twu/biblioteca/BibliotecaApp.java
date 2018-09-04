@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
 
-    private UserChecker userChecker = new UserChecker();
+    private PresetUsers presetUsers = new PresetUsers();
     private String libraryNumber = "";
 
     public List<Book> bookList = new ArrayList();
@@ -48,6 +48,9 @@ public class BibliotecaApp {
                     System.out.println("log in fail!");
                 }
                 break;
+            case "lo":
+                userLogout();
+                break;
             case "si":
                 showUserInfo();
                 break;
@@ -78,7 +81,16 @@ public class BibliotecaApp {
         }
     }
 
+    private void userLogout() {
+        libraryNumber = "";
+        System.out.println("loged out.");
+    }
+
     public void showUserInfo() {
+        UserInfo userInfo = presetUsers.getUserInfo(libraryNumber);
+        System.out.println("user name: " + userInfo.getLibraryNumber());
+        System.out.println("email: " + userInfo.getEmail());
+        System.out.println("phone: " + userInfo.getPhone());
     }
 
 
@@ -108,6 +120,7 @@ public class BibliotecaApp {
     void listMenu() {
         System.out.println("---------------MENU---------------");
         System.out.println(String.format("%-15s -> press 'li'", "log in"));
+        System.out.println(String.format("%-15s -> press 'lo'", "log out"));
         System.out.println(String.format("%-15s -> press 'si'", "show user info"));
         System.out.println(String.format("%-15s -> press 'lb'", "List Books"));
         System.out.println(String.format("%-15s -> press 'cb'", "Checkout Book"));
@@ -194,9 +207,10 @@ public class BibliotecaApp {
     }
 
     public boolean userLogin(String libraryNumber, String password) {
-        if(userChecker.checkUser(libraryNumber, password)) {
+        if(presetUsers.checkUser(libraryNumber, password)) {
             this.libraryNumber = libraryNumber;
+            return true;
         }
-        return true;
+        return false;
     }
 }
