@@ -8,6 +8,7 @@ public class Book {
     private String author;
     private Instant publishDate;
     private boolean isBooked;
+    private String userName;
 
     public Book(int id, String name, String author, Instant publishDate, boolean isBooked) {
         this.id = id;
@@ -23,6 +24,14 @@ public class Book {
     @Override
     public String toString() {
         return String.format("%-3s%-50s%-50s%-50s", id, name, author, publishDate);
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getName() {

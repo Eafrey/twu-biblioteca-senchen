@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
 
-    private List<Book> bookList = new ArrayList();
-    private List<Movie> movieList = new ArrayList();
+    public List<Book> bookList = new ArrayList();
+    public List<Movie> movieList = new ArrayList();
     private List<String> commandList = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -151,5 +151,8 @@ public class BibliotecaApp {
                 break;
             }
         }
+    }
+
+    public void userLogin(String libraryNumber, String password) {
     }
 }
