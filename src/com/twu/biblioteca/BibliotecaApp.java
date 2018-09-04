@@ -140,5 +140,16 @@ public class BibliotecaApp {
     }
 
     public void checkoutMovie(int movieId) {
+        for (Movie movie : movieList) {
+            if (movie.getId() == movieId) {
+                if (movie.isChecked()) {
+                    System.out.println("That movie is not available.");
+                } else {
+                    movie.setChecked(true);
+                    System.out.println("Thank you! Enjoy the movie.");
+                }
+                break;
+            }
+        }
     }
 }
