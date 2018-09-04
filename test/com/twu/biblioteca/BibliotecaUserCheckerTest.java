@@ -6,7 +6,10 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class BibliotecaUserTest {
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+public class BibliotecaUserCheckerTest {
 
     BibliotecaApp bibliotecaApp;
     final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
@@ -16,7 +19,6 @@ public class BibliotecaUserTest {
         System.setOut(new PrintStream(outputContent));
 
         bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.initMovieList();
     }
 
 
@@ -24,7 +26,7 @@ public class BibliotecaUserTest {
     public void bookShouldChckedWithUserName() {
         bibliotecaApp.userLogin("1111-1111", "123456");
         bibliotecaApp.checkoutBook(2);
-        bibliotecaApp.bookList.get(1).getUserName().equals("1111-1111");
+        assertThat(bibliotecaApp.bookList.get(1).getUserName(), is("1111-1111"));
     }
 
 }

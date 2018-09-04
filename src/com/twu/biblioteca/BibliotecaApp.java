@@ -7,9 +7,16 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
 
+    private UserChecker userChecker = new UserChecker();
+    private String libraryNumber = "";
+
     public List<Book> bookList = new ArrayList();
     public List<Movie> movieList = new ArrayList();
-    private List<String> commandList = new ArrayList<>();
+
+    public BibliotecaApp() {
+        initBookList();
+        initMovieList();
+    }
 
     public static void main(String[] args) {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
@@ -93,11 +100,13 @@ public class BibliotecaApp {
     }
 
     public void checkoutBook(int bookId) {
+        if (checkLogin()) return;
         for (Book book : bookList) {
             if (book.getId() == bookId) {
                 if (book.isBooked()) {
                     System.out.println("That book is not available.");
                 } else {
+                    book.setUserName(libraryNumber);
                     book.setBooked(true);
                     System.out.println("Thank you! Enjoy the book.");
                 }
@@ -106,10 +115,23 @@ public class BibliotecaApp {
         }
     }
 
+    private boolean checkLogin() {
+        if(libraryNumber.equals("")) {
+            System.out.println("Please log in.");
+            return true;
+        }
+        return false;
+    }
+
     public void returnBook(int bookId) {
+        if (checkLogin()) return;
         for (Book book : bookList) {
             if (book.getId() == bookId) {
                 if (book.isBooked()) {
+                    if(!book.getUserName().equals(libraryNumber)) {
+                        System.out.println("The book is not check by you!");
+                    }
+                    book.setUserName(null);
                     book.setBooked(false);
                     System.out.println("Thank you for returning the book.");
                 } else {
@@ -153,6 +175,10 @@ public class BibliotecaApp {
         }
     }
 
-    public void userLogin(String libraryNumber, String password) {
+    public boolean userLogin(String libraryNumber, String password) {
+        if(userChecker.checkUser(libraryNumber, password)) {
+            this.libraryNumber = libraryNumber;
+        }
+        return true;
     }
 }

@@ -21,7 +21,6 @@ public class BibliotecaBookTest {
         System.setOut(new PrintStream(outputContent));
 
         bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.initBookList();
     }
 
     @Test

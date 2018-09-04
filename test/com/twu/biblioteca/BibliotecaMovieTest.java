@@ -20,7 +20,6 @@ public class BibliotecaMovieTest {
         System.setOut(new PrintStream(outputContent));
 
         bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.initMovieList();
     }
 
     @Test
